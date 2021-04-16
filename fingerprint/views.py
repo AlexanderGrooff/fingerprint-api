@@ -35,5 +35,6 @@ class SaveFingerprintView(View):
 
     def post(self, request, *args, **kwargs):
         fp = Fingerprint.data_to_fingerprint(request.POST)
+        fp.seen_counter += 1
         fp.save()
         return HttpResponse()

@@ -25,7 +25,6 @@ class Fingerprint(models.Model):
             components = json.loads(fingerprint_data["components"])
             logger.info(f"Found new fingerprint: {hash}")
             fingerprint = Fingerprint(components=components, hash=hash)
-        fingerprint.seen_counter += 1
         return fingerprint
 
     def __str__(self):
