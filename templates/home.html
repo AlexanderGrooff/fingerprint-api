@@ -1,0 +1,39 @@
+{% load static %}
+Javascript is required for this to work
+<form action="/save">
+    {% csrf_token %}
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/fin.min.js' %}"></script>
+    <script>
+        (async () => {
+        //  initFingerprintJS()
+
+          // Initialize an agent at application startup.
+          const fpPromise = FingerprintJS.load();
+
+          // Get the visitor identifier when you need it.
+          const fp = await fpPromise
+          const result = await fp.get();
+
+          // This is the visitor identifier:
+          const visitorId = result.visitorId;
+          console.log(visitorId);
+          const components = result.components;
+          console.log(components);
+
+          $.ajax({
+            type: "POST",
+            url: "/save",
+            data: {
+              components: JSON.stringify(components),
+              csrfmiddlewaretoken: '{{ csrf_token }}',
+              hash: visitorId,
+            },
+            success: function () {
+              console.log("Saved!")
+            }
+          });
+
+        })();
+    </script>
+</form>
