@@ -27,8 +27,8 @@ class PrettyJSONWidget(widgets.Textarea):
 
 @admin.register(Fingerprint)
 class FingerprintAdmin(admin.ModelAdmin):
-    fields = ('hash', 'created', 'components')
-    readonly_fields = ('hash', 'created')
+    fields = ('hash', 'created', 'updated', 'seen_counter', 'components')
+    readonly_fields = ('hash', 'created', 'updated', 'seen_counter')
     formfield_overrides = {
         JSONField: {'widget': JSONEditorWidget},
     }

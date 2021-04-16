@@ -21,5 +21,4 @@ class SaveFingerprintView(View):
 
     def post(self, request, *args, **kwargs):
         fp = Fingerprint.data_to_fingerprint(request.POST)
-        logger.debug("Found fingerprint: {}".format(fp))
         return HttpResponse()
