@@ -29,7 +29,7 @@ class ResultView(View):
 
 
 class SaveFingerprintView(View):
-    template_name = 'form_template.html'
+    template_name = "form_template.html"
 
     def post(self, request, *args, **kwargs):
         fp = Fingerprint.data_to_fingerprint(request.POST)

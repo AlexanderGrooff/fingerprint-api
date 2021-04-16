@@ -18,7 +18,7 @@ from django.urls import path, re_path
 from fingerprint.views import HomeView, SaveFingerprintView, ResultView
 
 urlpatterns = [
-    path('', HomeView.as_view(), name='home'),
-    path('save', SaveFingerprintView.as_view(), name='save'),
-    re_path(r'result/(?P<hash_id>.*)/', ResultView.as_view(), name='result'),
+    path("", HomeView.as_view(), name="home"),
+    path("save", SaveFingerprintView.as_view(), name="save"),
+    re_path(r"result/(?P<hash_id>.*)/", ResultView.as_view(), name="result"),
 ]

@@ -15,7 +15,7 @@ class Fingerprint(models.Model):
     seen_counter = models.IntegerField(default=0)
 
     @staticmethod
-    def data_to_fingerprint(fingerprint_data: QueryDict) -> 'Fingerprint':
+    def data_to_fingerprint(fingerprint_data: QueryDict) -> "Fingerprint":
         hash = fingerprint_data["hash"]
 
         try:

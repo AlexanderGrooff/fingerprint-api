@@ -7,17 +7,24 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Fingerprint',
+            name="Fingerprint",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('components', models.JSONField()),
-                ('hash', models.CharField(max_length=50)),
-                ('created', models.DateTimeField(auto_now_add=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("components", models.JSONField()),
+                ("hash", models.CharField(max_length=50)),
+                ("created", models.DateTimeField(auto_now_add=True)),
             ],
         ),
     ]

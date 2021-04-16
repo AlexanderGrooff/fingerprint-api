@@ -6,18 +6,18 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('fingerprint', '0001_initial'),
+        ("fingerprint", "0001_initial"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='fingerprint',
-            name='seen_counter',
+            model_name="fingerprint",
+            name="seen_counter",
             field=models.IntegerField(default=0),
         ),
         migrations.AddField(
-            model_name='fingerprint',
-            name='updated',
+            model_name="fingerprint",
+            name="updated",
             field=models.DateTimeField(auto_now=True),
         ),
     ]
