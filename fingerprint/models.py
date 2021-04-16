@@ -20,13 +20,12 @@ class Fingerprint(models.Model):
 
         try:
             fingerprint = Fingerprint.objects.get(hash=hash)
-            fingerprint.seen_counter += 1
             logger.debug(f"Fingerprint {hash} already exists")
         except models.ObjectDoesNotExist:
             components = json.loads(fingerprint_data["components"])
             logger.info(f"Found new fingerprint: {hash}")
             fingerprint = Fingerprint(components=components, hash=hash)
-        fingerprint.save()
+        fingerprint.seen_counter += 1
         return fingerprint
 
     def __str__(self):
