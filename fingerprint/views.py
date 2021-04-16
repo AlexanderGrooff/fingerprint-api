@@ -1,5 +1,3 @@
-import json
-
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponse, JsonResponse, HttpResponseNotFound
 from django.shortcuts import render
