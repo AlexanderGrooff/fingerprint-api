@@ -14,10 +14,10 @@ jobs:
       uses: actions/checkout@v2
     - name: Build Docker image
       run: |
-        docker build -t ${{ secrets.DOCKER_REGISTRY_URL }}:${GITHUB_SHA} .
+        docker build -t ${{ secrets.DOCKER_REGISTRY_URL }}/$(basename ${GITHUB_REPOSITORY}):${GITHUB_SHA} .
     - name: Login docker registry
       run: |
         docker login -u ${{ secrets.DOCKER_REGISTRY_USERNAME }} -p ${{ secrets.DOCKER_REGISTRY_PASSWORD }} ${{ secrets.DOCKER_REGISTRY_URL }}
     - name: Publish
       run: |
-        docker push ${{ secrets.DOCKER_REGISTRY_URL }}:${GITHUB_SHA}
+        docker push ${{ secrets.DOCKER_REGISTRY_URL }}/$(basename ${GITHUB_REPOSITORY}):${GITHUB_SHA}
