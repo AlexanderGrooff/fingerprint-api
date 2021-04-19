@@ -18,6 +18,10 @@ jobs:
     - name: Login docker registry
       run: |
         docker login -u ${{ secrets.DOCKER_REGISTRY_USERNAME }} -p ${{ secrets.DOCKER_REGISTRY_PASSWORD }} ${{ secrets.DOCKER_REGISTRY_URL }}
+    - name: Tag as latest
+      run: |
+        docker tag ${{ secrets.DOCKER_REGISTRY_URL }}/$(basename ${GITHUB_REPOSITORY}):${GITHUB_SHA} ${{ secrets.DOCKER_REGISTRY_URL }}/$(basename ${GITHUB_REPOSITORY}):latest
     - name: Publish
       run: |
         docker push ${{ secrets.DOCKER_REGISTRY_URL }}/$(basename ${GITHUB_REPOSITORY}):${GITHUB_SHA}
+        docker push ${{ secrets.DOCKER_REGISTRY_URL }}/$(basename ${GITHUB_REPOSITORY}):latest
