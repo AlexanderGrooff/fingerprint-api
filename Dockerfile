@@ -7,7 +7,6 @@ COPY requirements /project/requirements
 RUN pip install -r requirements/production.txt
 COPY . /project/
 RUN ./manage.py collectstatic --clear --no-input
-RUN ./manage.py migrate
 
 EXPOSE 3000
-CMD ["./manage.py", "runserver", "localhost:3000"]
+CMD ["/project/entrypoint.sh"]
