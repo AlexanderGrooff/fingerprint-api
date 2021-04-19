@@ -27,5 +27,12 @@ class Fingerprint(models.Model):
             fingerprint = Fingerprint(components=components, hash=hash)
         return fingerprint
 
+    @property
+    def browser_name(self):
+        values = self.components.get("vendorFlavors", {}).get("value")
+        if values:
+            return values[0]
+        return "N/A"
+
     def __str__(self):
         return f"<Fingerprint - {self.hash}>"
