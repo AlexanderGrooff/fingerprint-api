@@ -1,0 +1,28 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static admin_list %}
+
+{% block extrastyle %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static 'css' %}/style.css?v=1">
+{% endblock %}
+
+{% block content %}
+<table class="diff">
+    <tr>
+        <td class="diff-cell"></td>
+        {% for fp in unique_fps %}
+        <td class="diff-cell">
+            <a href="{% url 'admin:fingerprint_fingerprint_changelist' %}{{ fp.id }}">{{ fp.hash }}</a>
+        </td>
+        {% endfor %}
+    </tr>
+    {% for key, diff_per_key in diff %}
+    <tr>
+        <td class="diff-cell">{{ key }}</td>
+        {% for fp, val in diff_per_key.items %}
+        <td class="diff-cell">{{ val }}</td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
