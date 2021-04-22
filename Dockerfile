@@ -6,7 +6,6 @@ WORKDIR /project
 COPY requirements /project/requirements
 RUN pip install -r requirements/production.txt
 COPY . /project/
-RUN ./manage.py collectstatic --clear --no-input
 
 EXPOSE 3000
 CMD ["/project/entrypoint.sh"]
