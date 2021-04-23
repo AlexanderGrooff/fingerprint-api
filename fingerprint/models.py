@@ -62,6 +62,7 @@ class Fingerprint(models.Model):
     def diff(self, *other_fps: List["Fingerprint"]):
         total_diff = defaultdict(dict)
         for other_fp in other_fps:
+            logger.debug(f"Comparing {self} to {other_fp}")
             fp_diff = self._diff_to_fp(other_fp)
             for key in fp_diff:
                 total_diff[key].update(fp_diff[key])

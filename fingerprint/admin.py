@@ -4,6 +4,7 @@ from django.db.models.query import QuerySet
 from django.shortcuts import render
 
 from django_json_widget.widgets import JSONEditorWidget
+from loguru import logger
 
 from fingerprint.models import Fingerprint
 
@@ -11,6 +12,7 @@ from fingerprint.models import Fingerprint
 @admin.action(description="Find difference")
 def find_diff(modeladmin, request, queryset: QuerySet[Fingerprint]):
     if queryset:
+        logger.debug(f"Comparing {queryset[0]} to {queryset[1:]}")
         diff = queryset[0].diff(*queryset)
 
         return render(
