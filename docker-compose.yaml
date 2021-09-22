@@ -11,6 +11,8 @@ services:
       POSTGRES_USER: fp
       POSTGRES_PASSWORD: fp
       SECRET_KEY: insecuredevkey
+      DJANGO_DEBUG: true
+      DJANGO_ALLOWED_HOSTS: "*"
     volumes:
       - ".:/project"
     depends_on:
